@@ -1,98 +1,74 @@
 "use client";
 
-import { useState } from "react";
-import Split from "react-split";
-import { LiveProvider } from "react-live";
-import ChallengePanel from "@/components/ChallengePanel";
-import CodeEditor from "@/components/CodeEditor";
-import PreviewPanel from "@/components/PreviewPanel";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import { Sparkles } from "lucide-react";
+import { Victor_Mono } from "next/font/google";
 
-const challenge = {
-  title: "Blue Button",
-  description: `
-Create a button with the text "Click Me" and style it with a blue background and white text.
+const victorMono = Victor_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+});
 
-Requirements:
-- The button text should be "Click Me"
-- Background color must be blue
-- Text color must be white
-- Rounded corners and padding
-  `,
-  starterCode: `() => (
-  <button style={{
-    backgroundColor: 'blue',
-    color: 'white',
-    border: 'none',
-    borderRadius: '6px',
-    padding: '10px 16px'
-  }}>
-    Click Me
-  </button>
-)`,
-};
-
-export default function Playground() {
-  const [code, setCode] = useState<string>(challenge.starterCode);
-
-  const handleSubmit = () => {
-    const preview = document.getElementById("preview-area");
-    if (!preview) return;
-    const html = preview.innerHTML.trim();
-
-    // ✅ Basic verification logic
-    if (
-      html.includes("Click Me") &&
-      html.includes("blue") &&
-      html.includes("white")
-    ) {
-      alert("✅ Challenge Passed!");
-    } else {
-      alert("❌ Try again!");
-    }
-  };
+export default function LandingPage() {
+  const router = useRouter();
 
   return (
-    <main className="h-screen w-screen bg-black text-gray-200 overflow-hidden p-3">
-      <div className="h-full w-full flex flex-col">
-        <Split
-          className="flex h-full"
-          sizes={[65, 35]} // Code editor bigger
-          minSize={[400, 300]}
-          gutterSize={6}
-          direction="horizontal"
-          cursor="col-resize"
-          gutterStyle={() => ({
-            backgroundColor: "#1a1a1a",
-            width: "6px",
-            borderRadius: "3px",
-          })}
-        >
-          {/* LEFT: Code Editor (with Submit button) */}
-          <LiveProvider code={code}>
-            <CodeEditor code={code} setCode={setCode} handleSubmit={handleSubmit} />
-          </LiveProvider>
+    <main
+      className={`${victorMono.className} h-screen w-full bg-[#0b0b0f] text-gray-100 flex flex-col`}
+    >
+      {/* 💄 Navbar */}
+      <Navbar />
 
-          {/* RIGHT: Challenge + Preview vertically split */}
-          <Split
-            className="flex flex-col h-full"
-            sizes={[55, 45]}
-            minSize={[200, 120]}
-            gutterSize={6}
-            direction="vertical"
-            cursor="row-resize"
-            gutterStyle={() => ({
-              backgroundColor: "#1a1a1a",
-              height: "6px",
-              borderRadius: "3px",
-            })}
-          >
-            <ChallengePanel challenge={challenge} />
-            <LiveProvider code={code}>
-              <PreviewPanel code={code} />
-            </LiveProvider>
-          </Split>
-        </Split>
+      {/* 🌙 Center Content */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
+        <motion.h1
+          className="text-5xl md:text-6xl font-extrabold mb-4 text-pink-400 drop-shadow-[0_0_15px_rgba(255,105,180,0.5)]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Welcome to{" "}
+          <span className="text-purple-300">
+            <span className="not-italic">pxl</span>
+            <span className="italic">-react</span>
+          </span>{" "}
+          ✨
+        </motion.h1>
+
+        <motion.p
+          className="text-gray-400 max-w-md text-sm md:text-base mb-10"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          Code cute. Debug fierce. 💅  
+          Build, test, and vibe your way through React challenges under the neon lights.
+        </motion.p>
+
+        <motion.button
+          onClick={() => router.push("/playground")}
+          className="flex items-center gap-2 px-8 py-4 bg-pink-500/20 border border-pink-400/40 text-pink-300 font-semibold text-sm rounded-full shadow-[0_0_10px_rgba(255,105,180,0.3)] hover:bg-pink-500/30 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,105,180,0.5)] transition-all duration-300"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <Sparkles size={18} className="text-pink-300 animate-pulse" />
+          Start Challenges 💖
+        </motion.button>
       </div>
+
+      {/* 🌸 Footer */}
+      <footer className="py-4 text-center text-xs text-gray-500 border-t border-pink-400/20 backdrop-blur-md bg-black/40">
+        © {new Date().getFullYear()}{" "}
+        <span className="text-pink-300 font-semibold">
+          <span className="not-italic">pxl</span>
+          <span className="italic">-react</span>
+        </span>{" "}
+        — Made with 🫶 and caffeine ☕
+      </footer>
     </main>
   );
 }
