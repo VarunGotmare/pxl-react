@@ -67,7 +67,7 @@ export default function LandingPage() {
           <span className="not-italic">pxl</span>
           <span className="italic">-react</span>
         </span>{" "}
-        — Made with 🫶 and caffeine ☕
+        — Made with &lt;3
       </footer>
     </main>
   );
