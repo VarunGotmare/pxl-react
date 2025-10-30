@@ -14,7 +14,7 @@ export default function PreviewPanel({ code }: PreviewPanelProps) {
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#2a2a2a] bg-[#181818]/90 rounded-t-2xl text-gray-300 font-mono">
           <div className="flex items-center gap-3">
             <div className="flex gap-2">
-              <span className="w-3.5 h-3.5 bg-red-500 rounded-full shadow-sm shadow-red-500/30"></span>
+              <span className="w-3.5 h-3.5 bg-pink-500 rounded-full shadow-sm shadow-pink-500/30"></span>
               <span className="w-3.5 h-3.5 bg-yellow-400 rounded-full shadow-sm shadow-yellow-400/30"></span>
               <span className="w-3.5 h-3.5 bg-green-500 rounded-full shadow-sm shadow-green-500/30"></span>
             </div>
