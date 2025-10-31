@@ -1,8 +1,8 @@
 "use client";
 
-import { LiveEditor, LiveError } from "react-live";
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import Editor from "@monaco-editor/react";
 
 interface CodeEditorProps {
   code: string;
@@ -43,16 +43,27 @@ export default function CodeEditor({ code, setCode, handleSubmit }: CodeEditorPr
           </div>
         </div>
 
-        {/* --- Code Editor --- */}
-        <div className="flex-1 overflow-auto">
-          <LiveEditor
+        {/* --- Monaco Code Editor --- */}
+        <div className="flex-1 overflow-hidden">
+          <Editor
+            height="100%"
+            defaultLanguage="javascript"
+            theme="vs-dark"
+            value={code}
             onChange={(val) => setCode(val || "")}
-            className="flex-1 font-mono text-[13px] leading-relaxed"
-            style={{
-              backgroundColor: "#121212",
-              color: "#d1d5db", // neutral light gray text
-              minHeight: "100%",
-              padding: "1.25rem",
+            options={{
+              minimap: { enabled: false },
+              fontSize: 14,
+              fontFamily: "JetBrains Mono, monospace",
+              automaticLayout: true,
+              formatOnType: true,
+              formatOnPaste: true,
+              autoClosingBrackets: "always",
+              autoIndent: "full",
+              scrollBeyondLastLine: false,
+              lineNumbers: "on",
+              tabSize: 2,
+              wordWrap: "on",
             }}
           />
         </div>
@@ -62,8 +73,6 @@ export default function CodeEditor({ code, setCode, handleSubmit }: CodeEditorPr
           className="flex justify-end items-center gap-3 px-5 py-3 border-t border-[#2a2a2a]
           bg-[#181818]/90 rounded-b-2xl"
         >
-          <LiveError className="text-red-400 text-sm flex-1" />
-
           <button
             onClick={handleSubmit}
             className="flex items-center gap-2 px-6 py-2.5 bg-pink-600 hover:bg-pink-700
