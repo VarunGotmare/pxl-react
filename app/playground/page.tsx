@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Split from "react-split";
 import { LiveProvider } from "react-live";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/landing/Navbar";
 import ChallengePanel from "@/components/ChallengePanel";
 import CodeEditor from "@/components/CodeEditor";
 import PreviewPanel from "@/components/PreviewPanel";

@@ -10,7 +10,11 @@ interface CodeEditorProps {
   handleSubmit: () => void;
 }
 
-export default function CodeEditor({ code, setCode, handleSubmit }: CodeEditorProps) {
+export default function CodeEditor({
+  code,
+  setCode,
+  handleSubmit,
+}: CodeEditorProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -74,13 +78,24 @@ export default function CodeEditor({ code, setCode, handleSubmit }: CodeEditorPr
           bg-[#181818]/90 rounded-b-2xl"
         >
           <button
-            onClick={handleSubmit}
-            className="flex items-center gap-2 px-6 py-2.5 bg-pink-600 hover:bg-pink-700
-            text-white font-bold text-sm rounded-full transition-all duration-300 shadow-md
-            active:scale-95"
+            disabled
+            className="relative group flex items-center gap-2 px-6 py-2.5 
+             bg-gray-700/40 text-gray-400 font-bold text-sm 
+             rounded-full cursor-not-allowed transition-all duration-300
+             shadow-inner shadow-black/20 select-none"
           >
-            <Sparkles size={18} className="text-white" />
+            <Sparkles size={18} className="text-gray-400" />
             Submit
+            {/* Tooltip */}
+            <span
+              className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 
+               bg-black/80 text-white text-xs 
+               py-1 px-2 rounded-md whitespace-nowrap 
+               opacity-0 group-hover:opacity-100 transition-opacity duration-300
+               pointer-events-none shadow-lg shadow-black/50"
+            >
+              🚧 Work in progress
+            </span>
           </button>
         </div>
       </div>
