@@ -26,7 +26,7 @@ export default function CodeEditor({
         className="relative flex-1 bg-[#121212]/90 rounded-2xl border border-[#2a2a2a]
         shadow-inner shadow-black/40 overflow-hidden backdrop-blur-sm flex flex-col"
       >
-        {/* --- Header Bar --- */}
+       {/* header */}
         <div
           className="flex items-center justify-between px-5 py-3.5 border-b border-[#2a2a2a]
           bg-[#181818]/90 rounded-t-2xl text-gray-200 font-mono"
@@ -47,7 +47,7 @@ export default function CodeEditor({
           </div>
         </div>
 
-        {/* --- Monaco Code Editor --- */}
+       {/* editor */}
         <div className="flex-1 overflow-hidden">
           <Editor
             height="100%"
@@ -72,7 +72,7 @@ export default function CodeEditor({
           />
         </div>
 
-        {/* --- Bottom Bar --- */}
+        {/* bot bar */}
         <div
           className="flex justify-end items-center gap-3 px-5 py-3 border-t border-[#2a2a2a]
           bg-[#181818]/90 rounded-b-2xl"
@@ -86,7 +86,7 @@ export default function CodeEditor({
           >
             <Sparkles size={18} className="text-gray-400" />
             Submit
-            {/* Tooltip */}
+            
             <span
               className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 
                bg-black/80 text-white text-xs 

@@ -10,7 +10,7 @@ export default function PreviewPanel({ code }: PreviewPanelProps) {
   return (
     <div className="flex flex-col h-full p-3">
       <div className="flex-1 bg-[#121212]/95 rounded-2xl border border-[#2a2a2a] shadow-inner shadow-black/40 overflow-hidden backdrop-blur-md flex flex-col">
-        {/* --- Header Bar --- */}
+       {/* header bar */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#2a2a2a] bg-[#181818]/90 rounded-t-2xl text-gray-300 font-mono">
           <div className="flex items-center gap-3">
             <div className="flex gap-2">
@@ -28,7 +28,7 @@ export default function PreviewPanel({ code }: PreviewPanelProps) {
           </div>
         </div>
 
-        {/* --- Live Preview Area --- */}
+        {/* preview area */}
         <div
           id="preview-area"
           className="flex-1 flex items-center justify-center bg-gradient-to-b from-[#0d0d0d] to-[#141414] p-6"

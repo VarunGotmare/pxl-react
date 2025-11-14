@@ -18,12 +18,12 @@ export default function Navbar() {
                  bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl
                  py-3 px-6 shadow-lg select-none"
     >
-      {/* LEFT — Logo + Title */}
+    
       <Link href="/" className="flex items-center gap-3 group relative">
-        {/* Soft blur aura */}
+        {/* aura  */}
         <div className="absolute -inset-3 rounded-xl bg-purple-500/20 blur-xl opacity-60 group-hover:opacity-90 transition-all"></div>
 
-        {/* Logo */}
+        {/* logoooo */}
         <Image
           src="/pxl-react.png"
           alt="PxlReact Logo"
@@ -32,7 +32,7 @@ export default function Navbar() {
           className="rounded-md relative z-10 transition-transform duration-200 group-hover:rotate-3 group-hover:scale-105"
         />
 
-        {/* Title */}
+        {/* title  */}
         <h1
           className={`${victorMono.className} text-[16px] font-medium tracking-wide text-gray-200 relative z-10`}
         >
@@ -41,7 +41,8 @@ export default function Navbar() {
         </h1>
       </Link>
 
-      {/* RIGHT — Star on GitHub Button */}
+      {/* star button  */}
+      {/* TODO: think of a better design */}
       <a
         href="https://github.com/VarunGotmare/pxl-react"
         target="_blank"

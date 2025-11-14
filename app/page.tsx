@@ -6,7 +6,6 @@ import Navbar from "@/components/landing/Navbar";
 import { Sparkles } from "lucide-react";
 import { Victor_Mono } from "next/font/google";
 import Footer from "@/components/landing/Footer";
-import LiquidEther from "@/components/landing/LiquidEther";
 import ColorBends from "@/components/landing/Bends";
 
 const victorMono = Victor_Mono({
@@ -24,7 +23,7 @@ export default function LandingPage() {
     >
       <Navbar />
 
-      {/* Background Animation */}
+      {/* anime  */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-90">
         <ColorBends
   colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
@@ -40,7 +39,7 @@ export default function LandingPage() {
 />
       </div>
 
-      {/* Center Content */}
+      {/* main content  */}
       <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
         <motion.h1
           className="text-5xl md:text-6xl font-extrabold mb-4 

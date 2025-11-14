@@ -12,7 +12,8 @@ export default function Playground() {
   const [challenge, setChallenge] = useState<any>(null);
   const [code, setCode] = useState<string>("");
 
-  // 🔹 Fetch a random challenge from MongoDB
+  // this fucker fetches a challenge everytime you load the page
+  // this aint optimized might need a new approach later
   useEffect(() => {
     const fetchChallenge = async () => {
       try {
@@ -37,7 +38,7 @@ export default function Playground() {
     if (!preview) return;
     const html = preview.innerHTML.trim();
 
-    // ✅ Placeholder check — later replace with component diff logic
+    // again this aint even implemented fix later
     if (html.includes("Click Me") && html.includes("blue") && html.includes("white")) {
       alert("✅ Challenge Passed!");
     } else {
@@ -55,10 +56,10 @@ export default function Playground() {
 
   return (
     <main className="h-screen w-screen bg-[#0a0a0a] text-gray-200 overflow-hidden flex flex-col">
-      {/* 🌈 Navbar */}
+      {/* cool navbar love it  */}
       <Navbar />
 
-      {/* 🧩 Split Playground */}
+     {/* leetcode inspired playground  */}
       <div className="flex-1 flex flex-col p-3">
         <Split
           className="flex h-full"
@@ -73,12 +74,12 @@ export default function Playground() {
             borderRadius: "3px",
           })}
         >
-          {/* LEFT: Code Editor */}
+          {/* editor  */}
           <LiveProvider code={code}>
             <CodeEditor code={code} setCode={setCode} handleSubmit={handleSubmit} />
           </LiveProvider>
 
-          {/* RIGHT: Challenge + Preview */}
+          {/* challenge and preview  */}
           <Split
             className="flex flex-col h-full"
             sizes={[55, 45]}
@@ -92,10 +93,10 @@ export default function Playground() {
               borderRadius: "3px",
             })}
           >
-            {/* Challenge info (with hidden targetCode rendering) */}
+            {/* info of challenge  */}
             <ChallengePanel challenge={challenge} />
 
-            {/* Live Preview of user code */}
+            {/* live preview  */}
             <LiveProvider code={code}>
               <PreviewPanel code={code} />
             </LiveProvider>
